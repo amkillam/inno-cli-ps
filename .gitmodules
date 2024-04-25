@@ -1,0 +1,3 @@
+[submodule "src/include/pascalscript"]
+	path = src/include/pascalscript
+	url = https://github.com/remobjects/pascalscript
