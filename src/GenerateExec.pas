@@ -1,23 +1,18 @@
-//   TbtString = {$IFDEF DELPHI2009UP}AnsiString{$ELSE}String{$ENDIF};
-// Should just be AnsiString
-
 library GenerateExec;
 uses 
-uPSUtil in '.\include\pascalscript\uPSRuntime.pas', {TbtString}
-uPSRuntime in '.\include\pascalscript\uPSRuntime.pas', {TPSExec}
+uPSUtils in '.\include\pascalscript\Source\uPSUtils.pas', {TbtString}
+uPSRuntime in '.\include\pascalscript\Source\uPSRuntime.pas'; {TPSExec}
 
 function GenerateExec(ByteCode: TbtString): TPSExec; cdecl;
-	var Exec: TPSExec;
 begin
-	Exec := TPSExec.Create;
-	Exec.LoadData(ByteCode);
-	return Exec;
+	GenerateExec := TPSExec.Create;
+	GenerateExec.LoadData(ByteCode);
 end;
 
-function TPSExec_RunProcPN(Exec: TPSExec; Params: array of Variant; ProcName: TbtString): Variant; cdecl;
+function TPSExecRunProcPN(Exec: TPSExec; Params: array of Variant; ProcName: TbtString): Variant; stdcall;
 begin
-	return Exec.RunProcPN(Params, ProcName);
+	TPSExecRunProcPN := Exec.RunProcPN(Params, ProcName);
 end;
 
-exports GenerateExec, TPSExec_RunProcPN;
+exports GenerateExec, TPSExecRunProcPN;
 end.

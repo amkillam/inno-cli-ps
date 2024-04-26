@@ -1,0 +1,31 @@
+name: free-pascal / CI
+
+on: {push,pull_request}
+
+jobs:
+  build:
+    name: Build
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install free-pascal compiler and GNU make
+        run: |
+          if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+            choco install -y make freepascal 
+          elif [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
+            export DEBIAN_FRONTEND=noninteractive
+            sudo apt-get update
+            sudo apt-get install -y fpc lcl
+          else 
+            yes | brew install fpc make
+          fi
+        shell: bash
+      - name: Compile libraries 
+        run: |
+          make
+
