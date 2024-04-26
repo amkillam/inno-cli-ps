@@ -1,8 +1,6 @@
 library InnoCli;
-uses GenerateExec, {GenerateExec, TPSExecRunProcPN}
-  uPSUtils in '.\include\pascalscript\Source\uPSUtils.pas', {TbtString}
-uPSRuntime in '.\include\pascalscript\Source\uPSRuntime.pas'; {TPSExec}
+uses GenerateExec; {GenerateExec, TPSExecRunProcPN}
 
 
-exports GenerateExec.TPSExecRunProcPN, GenerateExec.GenerateExec;
+exports GenerateExec.GenerateExec, GenerateExec.TPSExecRunProcPN;
 end.

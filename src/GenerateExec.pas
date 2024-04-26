@@ -3,8 +3,8 @@ unit GenerateExec;
 interface 
 
 uses 
-uPSUtils in '.\include\pascalscript\Source\uPSUtils.pas', {TbtString}
-uPSRuntime in '.\include\pascalscript\Source\uPSRuntime.pas'; {TPSExec}
+uPSUtils, {TbtString}
+uPSRuntime; {TPSExec}
 
 function GenerateExec(ByteCode: TbtString): TPSExec; cdecl;
 function TPSExecRunProcPN(Exec: TPSExec; Params: array of Variant; ProcName: TbtString): Variant; stdcall;
