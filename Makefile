@@ -1,5 +1,5 @@
 CC=fpc
-CFLAGS=-Fisrc -FUbuild -Xt -XS -Cn -Ur -FEbuild -Sh -I./src/include/pascalscript/Source/ -I./src -O3 -Fusrc/include/pascalscript/Source/ -v0 -ve
+CFLAGS=-Fisrc -FUbuild -Xt -XS -CD -Ur -FEbuild -Sh -I./src/include/pascalscript/Source/ -I./src -O3 -Fusrc/include/pascalscript/Source/ -v0 -ve
 AR=ar
 F=InnoCli
 FPCVER=$(shell fpc -iV)
